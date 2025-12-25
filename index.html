@@ -4,11 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CTW | Charoentawee Welding</title>
-  <meta name="description" content="CHAROENTAWEE WELDING (CTW) จำหน่ายเหล็กเส้น TATA และเหล็กมาตรฐานงานก่อสร้าง พร้อมบริการงานเชื่อมและงานโครงสร้าง" />
+  <meta name="description" content="CHAROENTAWEE WELDING (CTW) จำหน่ายเหล็กเส้น TATA และเหล็กมาตรฐานงานก่อสร้าง พร้อมบริการงานเชื่อม งานโครงสร้าง รับเหมาก่อสร้างโรงงาน และงานถนน" />
   <style>
     :root{
       --bg:#071a2a;         /* navy */
-      --bg2:#0b2540;
       --card:#0c2b4a;
       --text:#e9f0fb;
       --muted:#b7c5dd;
@@ -46,16 +45,20 @@
       background: linear-gradient(145deg, rgba(217,180,92,.22), rgba(217,180,92,.05));
       box-shadow: 0 10px 22px rgba(0,0,0,.25);
       font-weight:800; letter-spacing:.5px; color:var(--gold);
+      user-select:none;
     }
     .brand h1{font-size:14px; margin:0; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
     .brand p{font-size:12px; margin:2px 0 0; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; align-items:center}
+    .navLinks{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
     .chip{
       font-size:12px; padding:9px 12px; border-radius:999px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
+      cursor:pointer;
     }
     .chip:hover{border-color:rgba(217,180,92,.45)}
+    .chip:focus{outline:2px solid rgba(217,180,92,.55); outline-offset:2px}
 
     /* Hero */
     .hero{
@@ -150,7 +153,9 @@
       .heroTitle{font-size:34px}
       .cols{grid-template-columns:1fr}
       .contactGrid{grid-template-columns:1fr}
-      .nav{display:none}
+      /* Keep language toggle visible on mobile; hide only the link chips */
+      .nav{display:flex}
+      .navLinks{display:none}
     }
   </style>
 </head>
@@ -167,13 +172,15 @@
         </div>
       </div>
       <nav class="nav" aria-label="Main">
-        <a class="chip" href="#services" data-lang="th">สินค้า/บริการ</a>
-        <a class="chip" href="#services" data-lang="en" style="display:none">Services</a>
-        <a class="chip" href="#about" data-lang="th">เกี่ยวกับเรา</a>
-        <a class="chip" href="#about-en" data-lang="en" style="display:none">About</a>
-        <a class="chip" href="#contact" data-lang="th">ติดต่อ</a>
-        <a class="chip" href="#contact" data-lang="en" style="display:none">Contact</a>
-        <button class="chip" id="langToggle">TH / EN</button>
+        <div class="navLinks" aria-label="Primary links">
+          <a class="chip" href="#services" data-lang="th">สินค้า/บริการ</a>
+          <a class="chip" href="#services" data-lang="en" style="display:none">Services</a>
+          <a class="chip" href="#about" data-lang="th">เกี่ยวกับเรา</a>
+          <a class="chip" href="#about" data-lang="en" style="display:none">About</a>
+          <a class="chip" href="#contact" data-lang="th">ติดต่อ</a>
+          <a class="chip" href="#contact" data-lang="en" style="display:none">Contact</a>
+        </div>
+        <button class="chip" id="langToggle" type="button" aria-label="Toggle language">TH / EN</button>
       </nav>
     </header>
 
@@ -183,6 +190,7 @@
           <span data-lang="th">จัดหาเหล็ก • งานก่อสร้าง • ชลบุรี</span>
           <span data-lang="en" style="display:none">Steel Supply • Construction Projects • Chon Buri</span>
         </div>
+
         <h2 class="heroTitle" data-lang="th">เหล็กคุณภาพสำหรับงานก่อสร้าง <span>โครงการเล็ก–ใหญ่</span></h2>
         <h2 class="heroTitle" data-lang="en" style="display:none">Quality steel for <span>small to large projects</span></h2>
 
@@ -207,24 +215,34 @@
         <div class="card">
           <div class="tag" data-lang="th">จุดเด่น: <b>Foil Gold • Navy • Industrial</b></div>
           <div class="tag" data-lang="en" style="display:none">Highlights: <b>Foil Gold • Navy • Industrial</b></div>
+
           <div class="grid2">
             <div class="mini">
-              <h3>เหล็กเส้น TATA</h3>
-              <p>จัดหาเหล็กเส้นคุณภาพสำหรับงานโครงสร้างตามความต้องการโครงการ</p>
+              <h3 data-lang="th">เหล็กเส้น TATA</h3>
+              <h3 data-lang="en" style="display:none">TATA Steel Bars</h3>
+              <p data-lang="th">จัดหาเหล็กเส้นคุณภาพสำหรับงานโครงสร้างตามความต้องการโครงการ</p>
+              <p data-lang="en" style="display:none">Supply of quality steel bars for structural works based on project needs</p>
             </div>
             <div class="mini">
-              <h3>เหล็กงานก่อสร้าง</h3>
-              <p>เหล็กมาตรฐานสำหรับงานก่อสร้างทั่วไปและงานโรงงาน</p>
+              <h3 data-lang="th">เหล็กงานก่อสร้าง</h3>
+              <h3 data-lang="en" style="display:none">Construction Steel</h3>
+              <p data-lang="th">เหล็กมาตรฐานสำหรับงานก่อสร้างทั่วไปและงานโรงงาน</p>
+              <p data-lang="en" style="display:none">Standard steel for general construction and industrial projects</p>
             </div>
           </div>
+
           <div class="grid2">
             <div class="mini">
-              <h3>งานเชื่อม/โครงสร้าง</h3>
-              <p>งานเชื่อมประกอบ/งานโครงสร้างตามแบบ (ปรับข้อความตามบริการจริงได้)</p>
+              <h3 data-lang="th">งานเชื่อม/โครงสร้าง</h3>
+              <h3 data-lang="en" style="display:none">Welding / Structures</h3>
+              <p data-lang="th">งานเชื่อมประกอบ/งานโครงสร้างตามแบบ</p>
+              <p data-lang="en" style="display:none">Welding fabrication and steel structure works to drawings/specs</p>
             </div>
             <div class="mini">
-              <h3>ส่งมอบตรงเวลา</h3>
-              <p>ประสานงานและจัดส่งตามกำหนด เพื่อไม่ให้โครงการสะดุด</p>
+              <h3 data-lang="th">ส่งมอบตรงเวลา</h3>
+              <h3 data-lang="en" style="display:none">On-time Delivery</h3>
+              <p data-lang="th">ประสานงานและจัดส่งตามกำหนด เพื่อไม่ให้โครงการสะดุด</p>
+              <p data-lang="en" style="display:none">Coordinated deliveries to keep projects moving without delays</p>
             </div>
           </div>
         </div>
@@ -272,28 +290,23 @@
 
     <section id="about" class="panel">
       <div class="sectionHead">
-        <h2>เกี่ยวกับ CTW</h2>
-        <p>
+        <h2 data-lang="th">เกี่ยวกับ CTW</h2>
+        <h2 data-lang="en" style="display:none">About CTW</h2>
+        <p data-lang="th">
           <b>CHAROENTAWEE WELDING (CTW)</b> เป็นผู้จัดจำหน่ายเหล็กเส้น TATA และเหล็กมาตรฐานสำหรับงานก่อสร้าง
           พร้อมบริการรับเหมาก่อสร้างโรงงานและงานถนน มุ่งเน้นคุณภาพ ความถูกต้อง และความน่าเชื่อถือในการส่งมอบ
           เพื่อสนับสนุนงานก่อสร้างทุกขนาด.
         </p>
-      </div>
-    </section>
-
-    <section id="about-en" class="panel">
-      <div class="sectionHead">
-        <h2>About CTW (English)</h2>
-        <p>
-          <b>CHAROENTAWEE WELDING (CTW)</b> is a trusted supplier of <b>TATA steel bars</b> and
-          standard construction steel in Thailand. We also provide <b>factory construction</b>
-          services for small to large projects, including <b>road and civil works</b> such as
-          concrete roads, factory yards, and site improvement works.
-          Our focus is on quality, reliability, and on-time delivery to support construction
-          projects of all scales.
+        <p data-lang="en" style="display:none">
+          <b>CHAROENTAWEE WELDING (CTW)</b> is a trusted supplier of <b>TATA steel bars</b> and standard construction steel in Thailand.
+          We also provide <b>factory construction</b> services for small to large projects, including <b>road and civil works</b>
+          such as concrete roads, factory yards, and site improvement works. Our focus is on quality, reliability, and on-time delivery.
         </p>
       </div>
     </section>
+
+    <!-- kept for backward compatibility with old links; not used anymore -->
+    <section id="about-en" class="panel" style="display:none"></section>
 
     <section id="contact" class="panel">
       <div class="sectionHead">
@@ -356,33 +369,43 @@
   </div>
 
   <script>
+    // ========== Small self-tests (no UI impact) ==========
+    function assert(cond, msg){
+      if(!cond){
+        console.error('Test failed:', msg);
+      }
+    }
+
     // Year
-    const y = new Date().getFullYear();
-    document.getElementById('y').textContent = y;
-    document.getElementById('y2').textContent = y;
+    const year = new Date().getFullYear();
+    const yEl = document.getElementById('y');
+    const y2El = document.getElementById('y2');
+    if (yEl) yEl.textContent = String(year);
+    if (y2El) y2El.textContent = String(year);
 
     let currentLang = 'th';
 
     function setLang(lang){
       currentLang = lang;
       document.documentElement.setAttribute('lang', lang);
-      document.querySelectorAll('[data-lang]')
-        .forEach(el => el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none');
 
-      // ensure the About anchor is correct for the visible language
-      const aboutLinkTh = document.querySelector('a.chip[data-lang="th"][href="#about"]');
-      const aboutLinkEn = document.querySelector('a.chip[data-lang="en"][href="#about-en"]');
-      if (aboutLinkTh) aboutLinkTh.style.display = (lang==='th') ? '' : 'none';
-      if (aboutLinkEn) aboutLinkEn.style.display = (lang==='en') ? '' : 'none';
+      const nodes = document.querySelectorAll('[data-lang]');
+      nodes.forEach(function(el){
+        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+      });
 
-      // restore toggle label
+      // toggle button label
       const t = document.getElementById('langToggle');
       if (t) t.textContent = (lang === 'th') ? 'TH / EN' : 'EN / TH';
     }
 
     // Toggle
     const langBtn = document.getElementById('langToggle');
-    langBtn?.addEventListener('click', () => setLang(currentLang === 'th' ? 'en' : 'th'));
+    if (langBtn){
+      langBtn.addEventListener('click', function(){
+        setLang(currentLang === 'th' ? 'en' : 'th');
+      });
+    }
 
     // Copy contact details (language-aware)
     function buildCopyText(){
@@ -393,8 +416,7 @@
           'Email: Thaweesak050517@gmail.com',
           'Phone: 084-978-4825 / 092-251-4100',
           'Sales: chentarapon@gmail.com • 088-779-6384'
-        ].join('
-');
+        ].join('\n');
       }
       return [
         'ห้างหุ้นส่วนจำกัด เจริญทวี เว็ลดิ้ง (CTW)',
@@ -402,28 +424,56 @@
         'อีเมล: Thaweesak050517@gmail.com',
         'โทร: 084-978-4825 / 092-251-4100',
         'ฝ่ายขาย: chentarapon@gmail.com • 088-779-6384'
-      ].join('
-');
+      ].join('\n');
     }
 
-    const copyTh = document.getElementById('copy');
-    const copyEn = document.getElementById('copyEn');
-
-    function handleCopy(btn){
-      return (e) => {
+    function bindCopy(btnId){
+      const btn = document.getElementById(btnId);
+      if (!btn) return;
+      btn.addEventListener('click', function(e){
         e.preventDefault();
-        navigator.clipboard.writeText(buildCopyText()).then(() => {
+        const text = buildCopyText();
+        if (!navigator.clipboard){
+          // Fallback (older browsers)
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          try{
+            document.execCommand('copy');
+            const original = btn.textContent;
+            btn.textContent = (currentLang === 'en') ? 'Copied ✓' : 'คัดลอกแล้ว ✓';
+            setTimeout(function(){ btn.textContent = original; }, 1500);
+          }catch(_){
+            alert(currentLang === 'en' ? 'Copy failed' : 'คัดลอกไม่สำเร็จ');
+          }
+          document.body.removeChild(ta);
+          return;
+        }
+
+        navigator.clipboard.writeText(text).then(function(){
           const original = btn.textContent;
           btn.textContent = (currentLang === 'en') ? 'Copied ✓' : 'คัดลอกแล้ว ✓';
-          setTimeout(()=> btn.textContent = original, 1500);
-        }).catch(()=> alert(currentLang === 'en' ? 'Copy failed' : 'คัดลอกไม่สำเร็จ'));
-      };
+          setTimeout(function(){ btn.textContent = original; }, 1500);
+        }).catch(function(){
+          alert(currentLang === 'en' ? 'Copy failed' : 'คัดลอกไม่สำเร็จ');
+        });
+      });
     }
 
-    copyTh?.addEventListener('click', handleCopy(copyTh));
-    copyEn?.addEventListener('click', handleCopy(copyEn));
+    bindCopy('copy');
+    bindCopy('copyEn');
 
     // init
+    setLang('th');
+
+    // tests
+    assert(buildCopyText().indexOf('\n') !== -1, 'buildCopyText should contain newlines');
+    setLang('en');
+    assert(buildCopyText().indexOf('Thailand') !== -1, 'English copy text should include Thailand');
     setLang('th');
   </script>
 </body>
